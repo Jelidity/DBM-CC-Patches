@@ -30,26 +30,20 @@ Event OnUpdate()
 		Int j = DBMCampExcludedInteriorWorlds.Length
 		Int k = DBMCampExcludedTownWorlds.Length
 	
-		if i > 0
-			while i
-				CampAllowedWorlds.AddForm(DBMCampAllowedWorlds[i])
-				i -= 1
-			endwhile
-		endif
+		while i
+			i -= 1
+			CampAllowedWorlds.AddForm(DBMCampAllowedWorlds[i])
+		endwhile
 
-		if j > 0
-			while j
-				CampExcludedInteriorWorlds.AddForm(DBMCampExcludedInteriorWorlds[i])
-				j -= 1
-			endwhile
-		endif
+		while j
+			j -= 1
+			CampExcludedInteriorWorlds.AddForm(DBMCampExcludedInteriorWorlds[(j)])
+		endwhile
 
-		if k > 0
-			while k
-				CampExcludedTownWorlds.AddForm(DBMCampExcludedTownWorlds[i])
-				k -= 1
-			endwhile	
-		endif
+		while k
+			k -= 1
+			CampExcludedTownWorlds.AddForm(DBMCampExcludedTownWorlds[(k)])
+		endwhile	
 		
 	endif
 	
