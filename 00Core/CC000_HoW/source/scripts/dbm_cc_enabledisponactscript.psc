@@ -10,7 +10,7 @@ Event OnActivate(ObjectReference akActionRef)
 	if (akActionRef == Game.GetPlayer() && myRef.isdisabled())
 		myRef.enable()
 		DBM_DisplayCount.Mod(1)
-		DBMDebug.SendDisplayEvent(Self, Self, Self as Form, true)
+		DBMDebug.SendDisplayEvent(Self, myRef, myRef as Form, true)
 		DBMDebug.Log(Self, sQuestLine+ " display enabled.")
 	endif
 EndEvent
