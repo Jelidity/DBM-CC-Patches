@@ -1,3 +1,9 @@
 meta.ini
-DBM-CC-Patches.7z
-[IGNORE]*
+CC Patching - Addons_separator/
+CC Patching - CC Disabled_separator/
+CC Patching - Core_separator/
+CC Patching - Patches_separator/
+CC Patching - Synergy_separator/
+Mods_separator/
+Recent Installations_separator/
+MOD **/
