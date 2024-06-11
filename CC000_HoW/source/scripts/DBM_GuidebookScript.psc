@@ -23,7 +23,7 @@ Message Property DBM_GuideMSG2 Auto
 Message Property DBM_GuideMSG3 Auto
 {Travel to Armoury main, south, west, east, lower}
 ;Message Property DBM_GuideMSG4 Auto
-;{Travel to Art Gallery, Dragonborn Hall}
+;{Travel to Art Gallery, Dragonborn Hall, Hall of Wonders }
 Message Property DBM_GuideBlockedMSG Auto
 {Something is amiss}
 Message Property DBM_GuideFirstUseMSG Auto
@@ -60,10 +60,13 @@ ObjectReference[] Property aTeleportLocations2 Auto
 ObjectReference[] Property aTeleportLocations3 Auto
 {Teleport locations from the third menu}
 
+Bool DisplayPlannerState = False
 Bool FirstUse = TRUE
 Bool GuildHouseTravel
 Bool PlanetariumTravel
 Bool SafeHouseTravel
+
+DBM_DisplayPlanningScript Property DisplayManager Auto
 
 ReferenceAlias Property MyAlias Auto
 {Leave blank for replacement guides.}
@@ -196,7 +199,7 @@ Event OnRead()
 				endif
 			elseif iTeleportOption == 4 ;Next menu
 				iTeleportOption = DBM_GuideMSG3.Show()
-				if iTeleportOption < 4 ;DBHall, Guildhouse, Planetarium, Hall of Wonders
+				if iTeleportOption < 4 ;DBHall, Guildhouse, Planetarium, HOW
 					TeleportDestination = aTeleportLocations3[iTeleportOption]
 					if PlayerRef.GetParentCell() != TeleportDestination.GetParentCell()
 						debug.TraceUser("LegacyoftheDragonborn", Self+" teleporting player to: "+TeleportDestination)
@@ -208,6 +211,14 @@ Event OnRead()
 					;
 				endif
 			endif
+		endif
+	elseif iNavOption == 3 ;Display Planner
+		if DisplayPlannerState == False
+			DisplayPlannerState = True
+			DisplayManager.EnableIcons()
+		elseif DisplayPlannerState == True
+			DisplayPlannerState = False
+			DisplayManager.DisableIcons()
 		endif
 	endif
 	
